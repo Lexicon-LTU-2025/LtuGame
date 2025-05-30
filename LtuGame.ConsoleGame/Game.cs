@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 internal class Game
 {
+    private Map map;
+    private Player player;
+
     public Game()
     {
     }
@@ -14,6 +17,8 @@ internal class Game
 
     private void Init()
     {
-        var map = new Map(height: 10, width: 10);
+        //ToDo: Read from config
+        map = new Map(height: 10, width: 10);
+        player = new Player();
     }
 }

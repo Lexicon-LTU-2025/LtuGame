@@ -3,8 +3,8 @@ using System.ComponentModel;
 
 internal class Game
 {
-    private Map map = null!;
-    private Player player = null!;
+    private Map _map = null!;
+    private Player _player = null!;
 
     public Game()
     {
@@ -24,6 +24,7 @@ internal class Game
         do
         {
             //Drawmap
+            Drawmap();
 
             //GetCommand
 
@@ -38,10 +39,23 @@ internal class Game
         }while (gameInProgress);
     }
 
+    private void Drawmap()
+    {
+         Console.Clear();
+
+        for (int y = 0; y < _map.Height ; y++)
+        {
+            for (int x = 0; x < _map.Width; x++)
+            {
+                Cell cell = _map.GetCell(y, x);
+            }
+        }
+    }
+
     private void Init()
     {
         //ToDo: Read from config
-        map = new Map(height: 10, width: 10);
-        player = new Player();
+        _map = new Map(height: 10, width: 10);
+        _player = new Player();
     }
 }

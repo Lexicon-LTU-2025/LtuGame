@@ -1,6 +1,10 @@
-﻿internal class Map
+﻿
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+
+internal class Map
 {
-    private Cell[,] cells;
+    private Cell[,] _cells;
 
     public int Height { get; }
     public int Width {  get; }
@@ -11,6 +15,21 @@
         this.Height = height;
         this.Width = width;
 
-        cells = new Cell[height, width];
+        _cells = new Cell[height, width];
+    }
+
+   // [return: MaybeNull]
+    internal Cell? GetCell(int y, int x)
+    {
+        //ToDo: Fix this
+        try
+        {
+            return _cells[y,x];
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null;
+        }
     }
 }

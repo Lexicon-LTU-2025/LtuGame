@@ -1,10 +1,11 @@
 ﻿
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 internal class Game
 {
     private Map _map = null!;
-    private Player _player = null!;
+    private Creature _player = null!;
 
     public Game()
     {
@@ -61,6 +62,7 @@ internal class Game
         Console.ResetColor();
     }
 
+   // [MemberNotNull(nameof(_map), nameof(_player))]
     private void Init()
     {
         //ToDo: Read from config

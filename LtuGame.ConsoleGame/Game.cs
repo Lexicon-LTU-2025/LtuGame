@@ -79,5 +79,6 @@ internal class Game
         Cell? playerCell = _map.GetCell(0, 0);
         _player = new Player(playerCell!);
         _map.Creatures.Add(_player);
+        
     }
 }

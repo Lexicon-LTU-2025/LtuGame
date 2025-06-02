@@ -9,6 +9,7 @@ internal class Map
     public int Height { get; }
     public int Width {  get; }
 
+    public List<Creature> Creatures => new List<Creature>();
 
     public Map(int height, int width)
     {

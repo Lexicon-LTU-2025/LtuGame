@@ -1,4 +1,5 @@
 ﻿
+using LtuGame.ConsoleGame;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
@@ -20,7 +21,7 @@ internal class Map
 
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
-               _cells[y, x] = new Cell(y, x);
+               _cells[y, x] = new Cell(new Position(y, x));
     }
 
    // [return: MaybeNull]

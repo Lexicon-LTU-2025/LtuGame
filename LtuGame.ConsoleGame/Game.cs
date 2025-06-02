@@ -51,16 +51,16 @@ internal class Game
         {
           
             case ConsoleKey.UpArrow:
-                Move(_player.Cell.Y - 1, _player.Cell.X);
+              //  Move(_player.Cell.Y - 1, _player.Cell.X);
                 break;
             case ConsoleKey.DownArrow:
-                Move(_player.Cell.Y + 1, _player.Cell.X);
+               // Move(_player.Cell.Y + 1, _player.Cell.X);
                 break;
             case ConsoleKey.LeftArrow:
-                Move(_player.Cell.Y, _player.Cell.X - 1);
+               // Move(_player.Cell.Y, _player.Cell.X - 1);
                 break;
             case ConsoleKey.RightArrow:
-                Move(_player.Cell.Y, _player.Cell.X + 1);
+               // Move(_player.Cell.Y, _player.Cell.X + 1);
                 break;
            
         }

@@ -1,4 +1,5 @@
 ﻿
+using LtuGame.ConsoleGame;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
@@ -51,7 +52,8 @@ internal class Game
         {
           
             case ConsoleKey.UpArrow:
-              //  Move(_player.Cell.Y - 1, _player.Cell.X);
+                //  Move(_player.Cell.Y - 1, _player.Cell.X);
+                Move(Direction.North);
                 break;
             case ConsoleKey.DownArrow:
                // Move(_player.Cell.Y + 1, _player.Cell.X);
@@ -66,10 +68,10 @@ internal class Game
         }
     }
 
-    private void Move(int y, int x)
+    private void Move(Position newPosition)
     {
-        var newPosition = _map.GetCell(y, x);
-        if(newPosition is not null) _player.Cell = newPosition;
+        //var newPosition = _map.GetCell(y, x);
+        //if(newPosition is not null) _player.Cell = newPosition;
     }
 
     private void Drawmap()

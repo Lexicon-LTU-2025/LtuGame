@@ -1,6 +1,8 @@
-﻿namespace LtuGame.LimitedList;
+﻿using System.Collections;
 
-public class LimitedList<T> 
+namespace LtuGame.LimitedList;
+
+public class LimitedList<T>  : IEnumerable<T>
 {
     private readonly int _capacity;
     private List<T> _list;
@@ -21,5 +23,16 @@ public class LimitedList<T>
         _list.Add(item); return true;
     }
 
+    public IEnumerator<T> GetEnumerator()
+    {
+        foreach (var item in _list)
+        {
+            //..
+            //..
+            yield return item;
+        }
+    }
 
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+   
 }

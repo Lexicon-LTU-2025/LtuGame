@@ -1,4 +1,4 @@
-﻿using LtuGame.ConsoleGame;
+﻿using LtuGame.ConsoleGame.GameWorld;
 
 internal class Cell : IDrawable
 {

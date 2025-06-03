@@ -1,5 +1,4 @@
-﻿
-using LtuGame.ConsoleGame;
+﻿using LtuGame.ConsoleGame.GameWorld;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 

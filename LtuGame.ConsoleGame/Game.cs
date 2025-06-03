@@ -1,6 +1,5 @@
-﻿
-using LtuGame.ConsoleGame;
-using LtuGame.ConsoleGame.Extensions;
+﻿using LtuGame.ConsoleGame.Extensions;
+using LtuGame.ConsoleGame.GameWorld;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 

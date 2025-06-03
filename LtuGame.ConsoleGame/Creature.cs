@@ -24,7 +24,7 @@ internal abstract class Creature : IDrawable
             throw new ArgumentException($"'{nameof(symbol)}' cannot be null or whitespace.", nameof(symbol));
         }
 
-        Cell = cell ?? throw new ArgumentNullException(nameof(cell));
+        Cell = cell; // ?? throw new ArgumentNullException(nameof(cell));
         Symbol = symbol;
     }
 }

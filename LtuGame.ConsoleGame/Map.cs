@@ -29,4 +29,9 @@ internal class Map
     {
        return (x < 0 || x >= Width || y < 0 || y >= Height ?  null : _cells[y, x]);
     }
+
+    internal Cell? GetCell(Position newPosition)
+    {
+        return GetCell(newPosition.Y, newPosition.X);
+    }
 }

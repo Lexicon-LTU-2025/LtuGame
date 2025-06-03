@@ -1,5 +1,6 @@
 ﻿
 using LtuGame.ConsoleGame;
+using LtuGame.ConsoleGame.Extensions;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
@@ -85,13 +86,7 @@ internal class Game
                 Cell? cell = _map.GetCell(y, x);
                 ArgumentNullException.ThrowIfNull(cell, nameof(cell));
 
-                IDrawable drawable = cell;
-
-                foreach (Creature creature in _map.Creatures)
-                {
-                    if(creature.Cell == drawable)
-                        drawable = creature;
-                }
+                IDrawable drawable = _map.Creatures.CreatureAt(cell);
 
                 Console.ForegroundColor = drawable.Color;
                 Console.Write(drawable.Symbol);

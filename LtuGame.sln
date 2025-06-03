@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8EB900F3-327
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LtuGame.ConsoleGame", "LtuGame.ConsoleGame\LtuGame.ConsoleGame.csproj", "{9F2106B3-E3F9-4CF8-83AC-69A26EA94B99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LtuGame.LimitedList", "LtuGame.LimitedList\LtuGame.LimitedList.csproj", "{2913295E-D58E-4D0C-AC27-C72648A8FED2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{9F2106B3-E3F9-4CF8-83AC-69A26EA94B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F2106B3-E3F9-4CF8-83AC-69A26EA94B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F2106B3-E3F9-4CF8-83AC-69A26EA94B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2913295E-D58E-4D0C-AC27-C72648A8FED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2913295E-D58E-4D0C-AC27-C72648A8FED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2913295E-D58E-4D0C-AC27-C72648A8FED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2913295E-D58E-4D0C-AC27-C72648A8FED2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9F2106B3-E3F9-4CF8-83AC-69A26EA94B99} = {8EB900F3-327C-4D10-A06E-A713B512225D}
+		{2913295E-D58E-4D0C-AC27-C72648A8FED2} = {8EB900F3-327C-4D10-A06E-A713B512225D}
 	EndGlobalSection
 EndGlobal

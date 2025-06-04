@@ -1,4 +1,5 @@
-﻿using LtuGame.ConsoleGame.GameWorld;
+﻿using LtuGame.ConsoleGame;
+using LtuGame.ConsoleGame.GameWorld;
 
 internal class Cell : IDrawable
 {
@@ -6,9 +7,12 @@ internal class Cell : IDrawable
     public ConsoleColor Color { get; }
     public Position Position { get; }
 
+    public List<Item> Items { get; } 
+
     public Cell(Position position)
     {
         Color = ConsoleColor.Red;
         Position = position;
+        Items = new List<Item>();
     }
 }

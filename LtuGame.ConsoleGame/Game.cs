@@ -1,4 +1,5 @@
-﻿using LtuGame.ConsoleGame.Extensions;
+﻿using LtuGame.ConsoleGame;
+using LtuGame.ConsoleGame.Extensions;
 using LtuGame.ConsoleGame.GameWorld;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -90,6 +91,11 @@ internal class Game
         Cell? playerCell = _map.GetCell(0, 0);
         _player = new Player(playerCell!);
         _map.Creatures.Add(_player);
+
+        _map.GetCell(2, 6)?.Items.Add(Item.Coin());
+        _map.GetCell(2, 6)?.Items.Add(Item.Coin());
+        _map.GetCell(5, 2)?.Items.Add(Item.Coin());
+        _map.GetCell(4, 4)?.Items.Add(Item.Stone());
         
     }
 }

@@ -13,7 +13,7 @@ internal static class MapExtensions
 
         foreach (Creature creature in creatures)
         {
-            if (creature.Cell == result)
+            if (creature.Cell == cell)
             {
                 result = creature;
                 break;

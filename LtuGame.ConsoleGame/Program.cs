@@ -3,6 +3,7 @@ using LtuGame.ConsoleGame.Extensions;
 using LtuGame.LimitedList;
 
 //IEnumerable<int> list = new List<int>();
+
 //IEnumerable<Creature> list2 = new Creature[25];
 ////list2.CreatureAt(new Cell(new LtuGame.ConsoleGame.GameWorld.Position(1,2)));
 

@@ -1,8 +1,28 @@
 ﻿
 using LtuGame.ConsoleGame.Extensions;
+using LtuGame.LimitedList;
 
 internal class ConsoleUI
 {
+    private static MessageLog<string> _messageLog = new(6);
+
+    internal static void AddMessage(string message) => _messageLog.Add(message);
+
+    internal static void PrintLog()
+    {
+        _messageLog.Print(m => Console.WriteLine(m));
+        //_messageLog.Print(Console.WriteLine);
+        //_messageLog.Print(HowToPrint);
+        //_messageLog.Print(x => HowToPrint(x));
+    }
+
+    private static void HowToPrint(string message)
+    {
+        //...
+        //..
+        Console.WriteLine(message);
+    }
+
     internal static void Draw(IMap map)
     {
         for (int y = 0; y < map.Height; y++)

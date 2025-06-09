@@ -5,6 +5,7 @@ internal abstract class Creature : IDrawable
     private Cell _cell;
     public string Symbol { get; }
     public ConsoleColor Color { get; protected set; } = ConsoleColor.Green;
+    public int Health { get; } = 100;
     public Cell Cell 
     { 
         get => _cell;

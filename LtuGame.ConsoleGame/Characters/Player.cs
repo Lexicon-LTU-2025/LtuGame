@@ -4,7 +4,7 @@ using LtuGame.LimitedList;
 internal class Player : Creature
 {
     public LimitedList<Item> BackPack { get; }
-    public Player(Cell cell) : base(cell, "P ")
+    public Player(Cell cell) : base(cell, "P ", 100)
     {
         Color = ConsoleColor.White;
         BackPack = new LimitedList<Item>(3);

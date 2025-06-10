@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 
 internal class Game
 {
-    private Map _map = null!;
+    private IMap _map = null!;
     private Player _player = null!;
     private Dictionary<ConsoleKey, Action> actionmeny = null!;
 

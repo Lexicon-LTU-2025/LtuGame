@@ -67,7 +67,18 @@ internal class Game
             case ConsoleKey.P:
                 PickUp();
                 break;
+            case ConsoleKey.I:
+                Inventory();
+                break;
            
+        }
+    }
+
+    private void Inventory()
+    {
+        for (int i = 0; i < _player.BackPack.Count; i++)
+        {
+            ConsoleUI.AddMessage($"{i + 1}: {_player.BackPack[i]}");
         }
     }
 

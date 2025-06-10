@@ -8,6 +8,7 @@ internal class Game
 {
     private Map _map = null!;
     private Player _player = null!;
+    private Dictionary<ConsoleKey, Action> actionmeny = null!;
 
     public Game()
     {
@@ -72,11 +73,7 @@ internal class Game
                 //    break;
         }
 
-        var actionmeny = new Dictionary<ConsoleKey, Action>()
-                {
-                    {   ConsoleKey.P, PickUp    },
-                    {   ConsoleKey.I, Inventory }
-                };
+        
 
         if (actionmeny.ContainsKey(keyPressed))
         {
@@ -136,6 +133,7 @@ internal class Game
     // [MemberNotNull(nameof(_map), nameof(_player))]
     private void Init()
     {
+        CreateActionMeny();
         //ToDo: Read from config
         _map = new Map(height: 10, width: 10);
         Cell? playerCell = _map.GetCell(0, 0);
@@ -147,5 +145,16 @@ internal class Game
         _map.GetCell(5, 2)?.Items.Add(Item.Coin());
         _map.GetCell(4, 4)?.Items.Add(Item.Stone());
 
+        _map.Place(new Orc(_map.GetCell(3, 3)!));
+
+    }
+
+    private void CreateActionMeny()
+    {
+        actionmeny = new Dictionary<ConsoleKey, Action>()
+                {
+                    {   ConsoleKey.P, PickUp    },
+                    {   ConsoleKey.I, Inventory }
+                };
     }
 }

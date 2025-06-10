@@ -7,7 +7,7 @@ internal abstract class Creature : IDrawable
     public string Symbol { get; }
     public ConsoleColor Color { get; protected set; } = ConsoleColor.Green;
     public int MaxHealth { get; }
-    public int Damage { get; protected set; }
+    public int Damage { get; protected set; } = 50;
     public bool IsDead => _health <= 0;
     public int Health 
     { 
@@ -26,7 +26,7 @@ internal abstract class Creature : IDrawable
         } 
     }
 
-    public Creature(Cell cell, string symbol,int damage = 50, int maxHealth = 50)
+    public Creature(Cell cell, string symbol, int maxHealth = 50)
     {
         if (string.IsNullOrWhiteSpace(symbol))
         {
@@ -35,7 +35,6 @@ internal abstract class Creature : IDrawable
 
         Cell = cell; // ?? throw new ArgumentNullException(nameof(cell));
         Symbol = symbol;
-        Damage = damage;
         MaxHealth = maxHealth;
         Health = maxHealth;
     }

@@ -1,4 +1,5 @@
 ﻿
+using LtuGame.ConsoleGame;
 using LtuGame.ConsoleGame.Extensions;
 using LtuGame.LimitedList;
 
@@ -9,8 +10,16 @@ using LtuGame.LimitedList;
 
 
 
-//LimitedList<int> lm = new LimitedList<int>(10);
+//IEnumerable<int> lm = new LimitedList<int>(10);
 
+//var res = lm.Where(x => x > 5);
+
+
+
+//foreach (int i in lm)
+//{
+//    Console.WriteLine(i);
+//}
 
 
 

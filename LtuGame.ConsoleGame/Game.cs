@@ -22,7 +22,7 @@ internal class Game
 
     private void Play()
     {
-       bool gameInProgress = true;
+        bool gameInProgress = true;
 
         do
         {
@@ -40,9 +40,9 @@ internal class Game
 
             //Drawmap
 
-           // Console.ReadLine();
+            // Console.ReadLine();
 
-        }while (gameInProgress);
+        } while (gameInProgress);
     }
 
     private void GetCommand()
@@ -51,7 +51,7 @@ internal class Game
 
         switch (keyPressed)
         {
-          
+
             case ConsoleKey.UpArrow:
                 Move(Direction.North);
                 break;
@@ -64,14 +64,27 @@ internal class Game
             case ConsoleKey.RightArrow:
                 Move(Direction.East);
                 break;
-            case ConsoleKey.P:
-                PickUp();
-                break;
-            case ConsoleKey.I:
-                Inventory();
-                break;
-           
+                //case ConsoleKey.P:
+                //    PickUp();
+                //    break;
+                //case ConsoleKey.I:
+                //    Inventory();
+                //    break;
         }
+
+        var actionmeny = new Dictionary<ConsoleKey, Action>()
+                {
+                    {   ConsoleKey.P, PickUp    },
+                    {   ConsoleKey.I, Inventory }
+                };
+
+        if (actionmeny.ContainsKey(keyPressed))
+        {
+            actionmeny[keyPressed]?.Invoke();
+        }
+
+
+
     }
 
     private void Inventory()
@@ -84,7 +97,7 @@ internal class Game
 
     private void PickUp()
     {
-        if(_player.BackPack.IsFull)
+        if (_player.BackPack.IsFull)
         {
             ConsoleUI.AddMessage("Backpack is full");
             return;
@@ -95,7 +108,7 @@ internal class Game
 
         if (item is null) return;
 
-        if (_player.BackPack.Add(item)) 
+        if (_player.BackPack.Add(item))
         {
             ConsoleUI.AddMessage($"player pick up {item}");
             items.Remove(item);
@@ -107,20 +120,20 @@ internal class Game
     {
         var newPosition = _player.Cell.Position + movement;
         var newCell = _map.GetCell(newPosition);
-        if(newCell is not null) _player.Cell = newCell;
+        if (newCell is not null) _player.Cell = newCell;
     }
 
     private void Drawmap()
     {
-         ConsoleUI.Clear();
-         ConsoleUI.Draw(_map);
-         ConsoleUI.PrintStats($"Health: {_player.Health}");
-         ConsoleUI.PrintLog();
+        ConsoleUI.Clear();
+        ConsoleUI.Draw(_map);
+        ConsoleUI.PrintStats($"Health: {_player.Health}");
+        ConsoleUI.PrintLog();
 
-        
+
     }
 
-   // [MemberNotNull(nameof(_map), nameof(_player))]
+    // [MemberNotNull(nameof(_map), nameof(_player))]
     private void Init()
     {
         //ToDo: Read from config
@@ -133,6 +146,6 @@ internal class Game
         _map.GetCell(2, 6)?.Items.Add(Item.Coin());
         _map.GetCell(5, 2)?.Items.Add(Item.Coin());
         _map.GetCell(4, 4)?.Items.Add(Item.Stone());
-        
+
     }
 }

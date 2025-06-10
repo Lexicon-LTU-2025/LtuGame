@@ -38,4 +38,9 @@ internal abstract class Creature : IDrawable
         MaxHealth = maxHealth;
         Health = maxHealth;
     }
+
+    internal void Attack(Creature player)
+    {
+        //throw new NotImplementedException();
+    }
 }

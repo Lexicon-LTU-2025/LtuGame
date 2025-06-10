@@ -9,6 +9,7 @@ internal class Game
     private IMap _map = null!;
     private Player _player = null!;
     private Dictionary<ConsoleKey, Action> actionmeny = null!;
+    private bool gameInProgress;
 
     public Game()
     {
@@ -23,7 +24,7 @@ internal class Game
 
     private void Play()
     {
-        bool gameInProgress = true;
+        gameInProgress = true;
 
         do
         {
@@ -117,8 +118,18 @@ internal class Game
     {
         var newPosition = _player.Cell.Position + movement;
         var newCell = _map.GetCell(newPosition);
+        
         if (newCell is not null)
         {
+            Creature? opponent = _map.CreatureAt(newCell);
+            if (opponent is not null)
+            {
+                _player.Attack(opponent);
+                opponent.Attack(_player);
+            }
+
+            gameInProgress = !_player.IsDead;
+
             _player.Cell = newCell;
             if (newCell.Items.Any())
                 ConsoleUI.AddMessage($"You see: {string.Join(", ", newCell.Items)}");

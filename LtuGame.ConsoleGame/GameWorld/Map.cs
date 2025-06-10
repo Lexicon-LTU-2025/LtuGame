@@ -41,4 +41,7 @@ internal class Map : IMap
             Creatures.Add(creature);
         }
     }
+
+    public Creature? CreatureAt(Cell cell) => Creatures.FirstOrDefault(c => c.Cell == cell);
+    
 }

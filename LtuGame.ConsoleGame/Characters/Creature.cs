@@ -4,13 +4,18 @@ internal abstract class Creature : IDrawable
 {
     private Cell _cell;
     private int _health;
+    private ConsoleColor _color;
     public string Symbol { get; }
-    public ConsoleColor Color { get; protected set; } = ConsoleColor.Green;
     public int MaxHealth { get; }
     public int Damage { get; protected set; } = 50;
     public bool IsDead => _health <= 0;
     public string Name => GetType().Name;
     public static  Action<string>? AddToLog { get; set; }
+    public ConsoleColor Color 
+    {
+        get => IsDead ? ConsoleColor.Gray : _color; 
+        protected set => _color = value; 
+    }
     public int Health 
     { 
         get =>          _health;
@@ -39,6 +44,7 @@ internal abstract class Creature : IDrawable
         Symbol = symbol;
         MaxHealth = maxHealth;
         Health = maxHealth;
+        Color = ConsoleColor.Green;
     }
 
     internal void Attack(Creature target)

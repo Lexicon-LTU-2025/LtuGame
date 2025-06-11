@@ -142,7 +142,7 @@ internal class Game
     {
         ConsoleUI.Clear();
         ConsoleUI.Draw(_map);
-        ConsoleUI.PrintStats($"Health: {_player.Health}");
+        ConsoleUI.PrintStats($"Health: {_player.Health}, Enemys: {_map.Creatures.Where(c => !c.IsDead).Count() -1}");
         ConsoleUI.PrintLog();
 
 

@@ -8,7 +8,7 @@ internal class ConsoleUI : IUI
 
     public void AddMessage(string message) => _messageLog.Add(message);
 
-    internal void PrintLog()
+    public void PrintLog()
     {
         _messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth - m.Length)));
         //_messageLog.Print(Console.WriteLine);

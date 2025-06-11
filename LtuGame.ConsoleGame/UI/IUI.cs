@@ -6,6 +6,7 @@ internal interface IUI
     void Draw(IMap map);
     ConsoleKey GetKey();
     void PrintStats(string stats);
+    void PrintLog();
 }
 
 //public class SomeUI : IUI

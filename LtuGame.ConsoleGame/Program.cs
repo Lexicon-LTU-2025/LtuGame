@@ -46,7 +46,7 @@ using LtuGame.LimitedList;
 
 
 
-var game = new Game();
+var game = new Game(new ConsoleUI(), new Map(10, 10));
 
 game.Run();
 

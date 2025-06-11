@@ -2,6 +2,7 @@
 using LtuGame.ConsoleGame;
 using LtuGame.ConsoleGame.Extensions;
 using LtuGame.LimitedList;
+using Microsoft.Extensions.Configuration;
 
 //IEnumerable<int> list = new List<int>();
 
@@ -42,11 +43,23 @@ using LtuGame.LimitedList;
 //{
 //    Console.WriteLine(item);
 //}
+IConfiguration config = new ConfigurationBuilder()
+                                .SetBasePath(Environment.CurrentDirectory)
+                                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                                .Build();
+
+var ui = config.GetSection("game:ui").Value;
+//var x = config.GetSection("game:mapsettings:x").Value;
+//var y = config.GetSection("game:mapsettings:y").Value;
+
+var mapsettings = config.GetSection("game:mapsettings").GetChildren();
 
 
+var x = config.GetMapSizeFor("x");
+var y = config.GetMapSizeFor("y");
 
 
-var game = new Game(new ConsoleUI(), new Map(10, 10));
+var game = new Game(new ConsoleUI(), new Map(y, x));
 
 game.Run();
 

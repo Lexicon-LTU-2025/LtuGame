@@ -2,7 +2,9 @@
 using LtuGame.ConsoleGame.Extensions;
 using LtuGame.ConsoleGame.GameWorld;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Channels;
 
 internal class Game
 {
@@ -170,6 +172,15 @@ internal class Game
         _map.Place(new Troll(RCell()));
         _map.Place(new Goblin(RCell()));
         _map.Place(new Goblin(RCell()));
+
+        //_map.Creatures.ForEach(c =>
+        //{
+        //    c.AddToLog = ConsoleUI.AddMessage;
+        //    c.AddToLog += Console.WriteLine;
+        //});
+
+        Creature.AddToLog = ConsoleUI.AddMessage;
+        //Creature.AddToLog += Console.Write;
 
         Cell RCell()
         {

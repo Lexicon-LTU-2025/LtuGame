@@ -9,6 +9,8 @@ internal abstract class Creature : IDrawable
     public int MaxHealth { get; }
     public int Damage { get; protected set; } = 50;
     public bool IsDead => _health <= 0;
+    public string Name => GetType().Name;
+    public static  Action<string>? AddToLog { get; set; }
     public int Health 
     { 
         get =>          _health;
@@ -39,8 +41,18 @@ internal abstract class Creature : IDrawable
         Health = maxHealth;
     }
 
-    internal void Attack(Creature player)
+    internal void Attack(Creature target)
     {
-        //throw new NotImplementedException();
+        if(target.IsDead || this.IsDead) return;
+
+        var attacker = this.Name;
+
+        target.Health -= this.Damage;
+
+        AddToLog?.Invoke($"The {attacker} attacks the {target.Name} for {this.Damage}");
+
+        if (target.IsDead)
+            AddToLog?.Invoke($"The {target.Name} is dead");
+
     }
 }

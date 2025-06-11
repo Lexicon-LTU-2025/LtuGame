@@ -3,7 +3,8 @@ using LtuGame.ConsoleGame.GameWorld;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("LtuGame.Tests")]
 internal class Map : IMap
 {
     private Cell[,] _cells;
@@ -15,8 +16,8 @@ internal class Map : IMap
 
     public Map(IConfiguration config)
     {
-        Height = config.GetMapSizeFor("y");
-        Width = config.GetMapSizeFor("x");
+        Height = config.GetMapSizeFor2("y");
+        Width = config.GetMapSizeFor2("x");
 
         _cells = new Cell[Height, Width];
 

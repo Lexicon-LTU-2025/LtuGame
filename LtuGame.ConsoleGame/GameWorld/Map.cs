@@ -1,4 +1,6 @@
-﻿using LtuGame.ConsoleGame.GameWorld;
+﻿using LtuGame.ConsoleGame.Extensions;
+using LtuGame.ConsoleGame.GameWorld;
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,15 +13,15 @@ internal class Map : IMap
 
     public List<Creature> Creatures { get; } = new List<Creature>();
 
-    public Map(int height, int width)
+    public Map(IConfiguration config)
     {
-        this.Height = height;
-        this.Width = width;
+        Height = config.GetMapSizeFor("y");
+        Width = config.GetMapSizeFor("x");
 
-        _cells = new Cell[height, width];
+        _cells = new Cell[Height, Width];
 
-        for (int y = 0; y < height; y++)
-            for (int x = 0; x < width; x++)
+        for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width; x++)
                 _cells[y, x] = new Cell(new Position(y, x));
     }
 

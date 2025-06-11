@@ -3,6 +3,8 @@ using LtuGame.ConsoleGame;
 using LtuGame.ConsoleGame.Extensions;
 using LtuGame.LimitedList;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 //IEnumerable<int> list = new List<int>();
 
@@ -48,19 +50,27 @@ IConfiguration config = new ConfigurationBuilder()
                                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                                 .Build();
 
-var ui = config.GetSection("game:ui").Value;
-//var x = config.GetSection("game:mapsettings:x").Value;
-//var y = config.GetSection("game:mapsettings:y").Value;
 
-var mapsettings = config.GetSection("game:mapsettings").GetChildren();
+var host = Host.CreateDefaultBuilder(args)
+               .ConfigureServices(services =>
+               {
+                   services.AddSingleton<IUI, ConsoleUI>();
+                   services.AddSingleton<IMap, Map>();
+                   services.AddSingleton<IConfiguration>(config);
+                   services.AddSingleton<Game>();
+
+               })
+               .UseConsoleLifetime()
+               .Build();
+
+host.Services.GetRequiredService<Game>().Run();
 
 
-var x = config.GetMapSizeFor("x");
-var y = config.GetMapSizeFor("y");
+//var x = config.GetMapSizeFor("x");
+//var y = config.GetMapSizeFor("y");
 
 
-var game = new Game(new ConsoleUI(), new Map(y, x));
-
-game.Run();
+//var game = new Game(new ConsoleUI(), new Map(y, x));
+//game.Run();
 
 Console.WriteLine("Game over");

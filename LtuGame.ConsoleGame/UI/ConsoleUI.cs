@@ -2,13 +2,13 @@
 using LtuGame.ConsoleGame.Extensions;
 using LtuGame.LimitedList;
 
-internal class ConsoleUI
+internal class ConsoleUI : IUI
 {
-    private static MessageLog<string> _messageLog = new(6);
+    private MessageLog<string> _messageLog = new(6);
 
-    internal static void AddMessage(string message) => _messageLog.Add(message);
+    public void AddMessage(string message) => _messageLog.Add(message);
 
-    internal static void PrintLog()
+    internal void PrintLog()
     {
         _messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth - m.Length)));
         //_messageLog.Print(Console.WriteLine);
@@ -16,14 +16,14 @@ internal class ConsoleUI
         //_messageLog.Print(x => HowToPrint(x));
     }
 
-    private static void HowToPrint(string message)
-    {
-        //...
-        //..
-        Console.WriteLine(message);
-    }
+    //private  void HowToPrint(string message)
+    //{
+    //    //...
+    //    //..
+    //    Console.WriteLine(message);
+    //}
 
-    internal static void Draw(IMap map)
+    public void Draw(IMap map)
     {
         for (int y = 0; y < map.Height; y++)
         {
@@ -46,15 +46,15 @@ internal class ConsoleUI
         Console.ResetColor();
     }
 
-    internal static ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
+    public ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
 
-    internal static void Clear()
+    public void Clear()
     {
         Console.CursorVisible = false;
         Console.SetCursorPosition(0, 0);
     }
 
-    internal static void PrintStats(string stats)
+    public void PrintStats(string stats)
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(stats);

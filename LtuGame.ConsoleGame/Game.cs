@@ -8,10 +8,11 @@ using System.Threading.Channels;
 
 internal class Game
 {
-    private IMap _map = null!;
+    private Map _map = null!;
     private Player _player = null!;
     private Dictionary<ConsoleKey, Action> actionmeny = null!;
     private bool gameInProgress;
+    private ConsoleUI _ui = new ConsoleUI();
 
     public Game()
     {
@@ -51,7 +52,7 @@ internal class Game
 
     private void GetCommand()
     {
-        var keyPressed = ConsoleUI.GetKey();
+        var keyPressed = _ui.GetKey();
 
         switch (keyPressed)
         {
@@ -91,7 +92,7 @@ internal class Game
     {
         for (int i = 0; i < _player.BackPack.Count; i++)
         {
-            ConsoleUI.AddMessage($"{i + 1}: {_player.BackPack[i]}");
+            _ui.AddMessage($"{i + 1}: {_player.BackPack[i]}");
         }
     }
 
@@ -99,7 +100,7 @@ internal class Game
     {
         if (_player.BackPack.IsFull)
         {
-            ConsoleUI.AddMessage("Backpack is full");
+            _ui.AddMessage("Backpack is full");
             return;
         }
 
@@ -110,7 +111,7 @@ internal class Game
 
         if (_player.BackPack.Add(item))
         {
-            ConsoleUI.AddMessage($"player pick up {item}");
+            _ui.AddMessage($"player pick up {item}");
             items.Remove(item);
         }
 
@@ -134,16 +135,16 @@ internal class Game
 
             _player.Cell = newCell;
             if (newCell.Items.Any())
-                ConsoleUI.AddMessage($"You see: {string.Join(", ", newCell.Items)}");
+                _ui.AddMessage($"You see: {string.Join(", ", newCell.Items)}");
         }
     }
 
     private void Drawmap()
     {
-        ConsoleUI.Clear();
-        ConsoleUI.Draw(_map);
-        ConsoleUI.PrintStats($"Health: {_player.Health}, Enemys: {_map.Creatures.Where(c => !c.IsDead).Count() -1}");
-        ConsoleUI.PrintLog();
+        _ui.Clear();
+        _ui.Draw(_map);
+        _ui.PrintStats($"Health: {_player.Health}, Enemys: {_map.Creatures.Where(c => !c.IsDead).Count() -1}  ");
+        _ui.PrintLog();
 
 
     }
@@ -179,7 +180,7 @@ internal class Game
         //    c.AddToLog += Console.WriteLine;
         //});
 
-        Creature.AddToLog = ConsoleUI.AddMessage;
+        Creature.AddToLog = _ui.AddMessage;
         //Creature.AddToLog += Console.Write;
 
         Cell RCell()
@@ -211,11 +212,11 @@ internal class Game
         if(item != null && _player.BackPack.Remove(item))
         {
             _player.Cell.Items.Add(item);
-            ConsoleUI.AddMessage($"Player dropped the {item}");
+            _ui.AddMessage($"Player dropped the {item}");
         }
         else
         {
-            ConsoleUI.AddMessage("Backpack is empty");
+            _ui.AddMessage("Backpack is empty");
         }
     }
 }

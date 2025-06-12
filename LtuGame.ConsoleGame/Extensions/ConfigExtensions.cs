@@ -24,6 +24,20 @@ public static class GetMapSizeForClass
     }
 }
 
+public static class GetMapSizeForClassFunc
+{
+    public static Func<IConfiguration, string, int> Implementation { private get; set; } = (config, key) =>
+    {
+        var section = config.GetSection("game:mapsettings");
+        return int.TryParse(section[key], out int result) ? result : 0;
+    };
+
+    public static int GetMapSizeFor3(this IConfiguration config, string key)
+    {
+        return Implementation(config, key);
+    }
+}
+
 public interface IGetMapSizeFor
 {
     int GetMapSizeFor2(IConfiguration config, string key);

@@ -16,8 +16,8 @@ internal class Map : IMap
 
     public Map(IConfiguration config)
     {
-        Height = config.GetMapSizeFor2("y");
-        Width = config.GetMapSizeFor2("x");
+        Height = config.GetMapSizeFor3("y");
+        Width = config.GetMapSizeFor3("x");
 
         _cells = new Cell[Height, Width];
 

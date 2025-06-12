@@ -4,14 +4,15 @@ using LtuGame.LimitedList;
 
 internal class ConsoleUI : IUI
 {
-    private MessageLog<string> _messageLog = new(6);
+    private ILimitedList<string> _messageLog;
     private readonly IMap _map;
 
     public void AddMessage(string message) => _messageLog.Add(message);
 
-    public ConsoleUI(IMap map)
+    public ConsoleUI(IMap map, ILimitedList<string> messageLog)
     {
         _map = map;
+        _messageLog = messageLog;
     }
 
     public void PrintLog()

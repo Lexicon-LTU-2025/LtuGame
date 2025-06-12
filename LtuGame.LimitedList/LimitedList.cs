@@ -2,7 +2,7 @@
 
 namespace LtuGame.LimitedList;
 
-public class LimitedList<T>  : IEnumerable<T>
+public class LimitedList<T> :  ILimitedList<T>
 {
     private readonly int _capacity;
     protected List<T> _list;
@@ -26,7 +26,7 @@ public class LimitedList<T>  : IEnumerable<T>
     {
         ArgumentNullException.ThrowIfNull(item, nameof(item));
 
-        if(IsFull) return false;
+        if (IsFull) return false;
         _list.Add(item); return true;
     }
 
@@ -49,6 +49,6 @@ public class LimitedList<T>  : IEnumerable<T>
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    public bool Remove(T item) => _list.Remove(item);   
-  
+    public bool Remove(T item) => _list.Remove(item);
+
 }

@@ -24,6 +24,8 @@ internal class Map : IMap
         //Height = mapSettings.Y;
         //Width = mapSettings.X;
 
+        //ToDo: Validate!!!!!! 
+
         var (width, height) = getMapSize.GetMapSize();
         Height = height;
         Width = width;

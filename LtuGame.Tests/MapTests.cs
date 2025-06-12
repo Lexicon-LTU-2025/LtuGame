@@ -1,5 +1,6 @@
 ﻿using LtuGame.ConsoleGame;
 using LtuGame.ConsoleGame.Extensions;
+using LtuGame.ConsoleGame.Services;
 using Microsoft.Extensions.Configuration;
 using Moq;
 
@@ -56,18 +57,36 @@ public class MapTests
     //    Assert.Equal(expectedWidth, map.Width);
     //}
 
+    //[Fact]
+    //public void Constructor_SetCorrectWidth_WithIMapSettings()
+    //{
+    //    //Arrange
+    //    const int expectedWidth = 10;
+    //    //var mapsettings = new Mock<IMapSettings>();
+    //    //mapsettings.Setup(settings => settings.Y).Returns(expectedWidth);
+    //    var mapSettings = new MapSettings { X = expectedWidth };
+
+    //    //Act
+    //   // var map = new Map(mapsettings.Object);
+    //    var map = new Map(mapSettings);
+
+    //    //Assert
+    //    Assert.Equal(expectedWidth, map.Width);
+    //}
+
     [Fact]
-    public void Constructor_SetCorrectWidth_WithIMapSettings()
+    public void Constructor_SetCorrectWidth_With_IGetMapSizeService()
     {
         //Arrange
         const int expectedWidth = 10;
-        //var mapsettings = new Mock<IMapSettings>();
-        //mapsettings.Setup(settings => settings.Y).Returns(expectedWidth);
-        var mapSettings = new MapSettings { X = expectedWidth };
+        const int expectedHeight = 10;
+       
+        var mapServiceMock = new Mock<IGetMapSizeService>();
+        mapServiceMock.Setup(service => service.GetMapSize()).Returns((expectedWidth, expectedHeight));
 
         //Act
        // var map = new Map(mapsettings.Object);
-        var map = new Map(mapSettings);
+        var map = new Map(mapServiceMock.Object);
 
         //Assert
         Assert.Equal(expectedWidth, map.Width);

@@ -1,6 +1,7 @@
 ﻿using LtuGame.ConsoleGame;
 using LtuGame.ConsoleGame.Extensions;
 using LtuGame.ConsoleGame.GameWorld;
+using LtuGame.ConsoleGame.Services;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -153,7 +154,8 @@ internal class Game
     {
         CreateActionMeny();
         //ToDo: Read from config
-      //  _map = new Map(height: 10, width: 10);
+        //_map = new Map(height: 10, width: 10);
+        _map = new Map(new GetMapSizeService(new ));
         Cell? playerCell = _map.GetCell(0, 0);
         _player = new Player(playerCell!);
         _map.Creatures.Add(_player);

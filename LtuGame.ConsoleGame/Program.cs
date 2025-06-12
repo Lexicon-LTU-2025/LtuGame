@@ -1,6 +1,7 @@
 ﻿
 using LtuGame.ConsoleGame;
 using LtuGame.ConsoleGame.Extensions;
+using LtuGame.ConsoleGame.Services;
 using LtuGame.LimitedList;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -58,6 +59,7 @@ var host = Host.CreateDefaultBuilder(args)
                    services.AddSingleton<IMap, Map>();
                    services.AddSingleton<IConfiguration>(config);
                    services.AddSingleton<IMapSettings>(config.GetSection("game:mapsettings").Get<MapSettings>()!);
+                   services.AddSingleton<IGetMapSizeService, GetMapSizeService>();
                    services.AddSingleton<Game>();
 
                })
